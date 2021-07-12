@@ -43,5 +43,10 @@ namespace SstuEpam.Shops.BLL.BLL
         {
             StoresDAO.RemoveStore(id);
         }
+
+        public Store GetStoreById(long id)
+        {
+            return StoresDAO.SearchStoreById(id);
+        }
     }
 }

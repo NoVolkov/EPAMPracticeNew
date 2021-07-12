@@ -1,0 +1,6 @@
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.Entities\bin\Debug\SstuEpam.Shops.Entities.dll
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.Entities\bin\Debug\SstuEpam.Shops.Entities.pdb
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.Entities\obj\Debug\SstuEpam.Shops.Entities.csproj.AssemblyReference.cache
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.Entities\obj\Debug\SstuEpam.Shops.Entities.csproj.CoreCompileInputs.cache
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.Entities\obj\Debug\SstuEpam.Shops.Entities.dll
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.Entities\obj\Debug\SstuEpam.Shops.Entities.pdb

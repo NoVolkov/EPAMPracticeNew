@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SstuEpam.Shops.BLL.BLL\SstuEpam.Shops.BLL.BLL.csproj">
+      <Project>{0327e36c-b6b6-4513-a436-74e7b4b421ad}</Project>
+      <Name>SstuEpam.Shops.BLL.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SstuEpam.Shops.BLL.Interfaces\SstuEpam.Shops.BLL.Interfaces.csproj">
       <Project>{5bd99db1-47e2-46bd-a97e-f2c70ce50f9b}</Project>
       <Name>SstuEpam.Shops.BLL.Interfaces</Name>

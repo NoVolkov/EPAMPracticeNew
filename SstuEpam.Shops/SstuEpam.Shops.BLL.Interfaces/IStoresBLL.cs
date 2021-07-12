@@ -14,6 +14,7 @@ namespace SstuEpam.Shops.BLL.Interfaces
         void AddStore(Store store);
         void RemoveStore(long id);
         Store GetStoreByName(string wordForSearch);
+        Store GetStoreById(long id);
         List<Store> GetStores();
         void EditStore(long id, Store newStore);
     }

@@ -1,0 +1,11 @@
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\bin\Debug\SstuEpam.Shops.DAL.SqlDAL.ADO.dll
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\bin\Debug\SstuEpam.Shops.DAL.SqlDAL.ADO.pdb
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\bin\Debug\SstuEpam.Shops.DAL.Interfaces.dll
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\bin\Debug\SstuEpam.Shops.Entities.dll
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\bin\Debug\SstuEpam.Shops.DAL.Interfaces.pdb
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\bin\Debug\SstuEpam.Shops.Entities.pdb
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\obj\Debug\SstuEpam.Shops.DAL.SqlDAL.ADO.csproj.AssemblyReference.cache
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\obj\Debug\SstuEpam.Shops.DAL.SqlDAL.ADO.csproj.CoreCompileInputs.cache
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\obj\Debug\SstuEpam.Shops.DAL.SqlDAL.ADO.csproj.CopyComplete
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\obj\Debug\SstuEpam.Shops.DAL.SqlDAL.ADO.dll
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.SqlDAL.ADO\obj\Debug\SstuEpam.Shops.DAL.SqlDAL.ADO.pdb

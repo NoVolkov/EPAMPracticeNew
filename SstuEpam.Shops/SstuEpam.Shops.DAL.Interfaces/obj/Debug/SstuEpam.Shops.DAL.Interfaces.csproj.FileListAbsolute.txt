@@ -1,0 +1,9 @@
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.Interfaces\bin\Debug\SstuEpam.Shops.DAL.Interfaces.dll
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.Interfaces\bin\Debug\SstuEpam.Shops.DAL.Interfaces.pdb
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.Interfaces\bin\Debug\SstuEpam.Shops.Entities.dll
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.Interfaces\bin\Debug\SstuEpam.Shops.Entities.pdb
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.Interfaces\obj\Debug\SstuEpam.Shops.DAL.Interfaces.csproj.AssemblyReference.cache
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.Interfaces\obj\Debug\SstuEpam.Shops.DAL.Interfaces.csproj.CoreCompileInputs.cache
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.Interfaces\obj\Debug\SstuEpam.Shops.DAL.Interfaces.csproj.CopyComplete
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.Interfaces\obj\Debug\SstuEpam.Shops.DAL.Interfaces.dll
+D:\source\repos\EPAMPracticeNew\SstuEpam.Shops\SstuEpam.Shops.DAL.Interfaces\obj\Debug\SstuEpam.Shops.DAL.Interfaces.pdb

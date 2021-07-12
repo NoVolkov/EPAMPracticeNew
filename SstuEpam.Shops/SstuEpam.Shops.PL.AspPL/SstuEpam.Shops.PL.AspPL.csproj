@@ -125,6 +125,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\StoreModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,10 +163,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Pages\" />
   </ItemGroup>
@@ -179,6 +182,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SstuEpam.Shops.BLL.BLL\SstuEpam.Shops.BLL.BLL.csproj">
+      <Project>{0327e36c-b6b6-4513-a436-74e7b4b421ad}</Project>
+      <Name>SstuEpam.Shops.BLL.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SstuEpam.Shops.BLL.Interfaces\SstuEpam.Shops.BLL.Interfaces.csproj">
+      <Project>{5bd99db1-47e2-46bd-a97e-f2c70ce50f9b}</Project>
+      <Name>SstuEpam.Shops.BLL.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SstuEpam.Shops.DependencyResolver\SstuEpam.Shops.DependencyResolver.csproj">
+      <Project>{c22bb1fc-e23a-476b-8aaa-dcbf027ec7fd}</Project>
+      <Name>SstuEpam.Shops.DependencyResolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SstuEpam.Shops.Entities\SstuEpam.Shops.Entities.csproj">
+      <Project>{f6d055ee-c141-491d-b939-53b2407977e2}</Project>
+      <Name>SstuEpam.Shops.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

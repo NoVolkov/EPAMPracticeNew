@@ -7,5 +7,18 @@ namespace SstuEpam.Shops.PL.AspPL.Models
 {
     public class StoreModel
     {
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Website { get; set; }
+        public string Rating { get; set; }
+        public List<CommentModel> comments;
+
+        public StoreModel(string name, string address, string website, string rating)
+        {
+            Name = name;
+            Address = address;
+            Website = website;
+            Rating = rating;
+        }
     }
 }

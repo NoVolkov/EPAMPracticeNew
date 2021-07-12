@@ -93,9 +93,37 @@ namespace SstuEpam.Shops.DAL.SqlDAL
             }
         }//+
 
+        public Store SearchStoreById(long id)
+        {
+            Store s=null;
+            using (SqlConnection con = new SqlConnection(strConToMSSQLDB()))
+            {
+                SqlCommand com = new SqlCommand("SelStoreByID", con);
+                com.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter prm = new SqlParameter("@Id",System.Data.SqlDbType.BigInt);
+                prm.Value = id;
+                com.Parameters.Add(prm);
+                con.Open();
+                SqlDataReader r = com.ExecuteReader();
+                while (r.Read())
+                {
+                    s = new Store(
+                        (long)r["id"],
+                        (string)r["name"],
+                        (string)r["rating"],
+                        (string)r["address"],
+                        (string)r["website"]
+                        );
+                }
+                con.Close();
+            }
+            return s;
+        }
+
         public Store SearchStoreByName(string wordForSearch)
         {
             throw new NotImplementedException();
         }
+
     }
 }

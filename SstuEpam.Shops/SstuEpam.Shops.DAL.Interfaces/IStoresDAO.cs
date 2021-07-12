@@ -12,6 +12,7 @@ namespace SstuEpam.Shops.DAL.Interfaces
         void AddStore(Store store);
         void RemoveStore(long id);
         Store SearchStoreByName(string wordForSearch);
+        Store SearchStoreById(long id);
         List<Store> FindAllStores();
         void EditStore(long id, Store newStore);
     }
