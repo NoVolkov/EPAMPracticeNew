@@ -45,12 +45,14 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
 
             return View(sm);
         }
-
-        public ActionResult Contact()
+        //Сделать так, чтобы только авторизированные пользователи могли работать с формой и методом
+        [HttpPost]
+        public ActionResult SendComment(long idStore, string text, string rating)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            long idUser = (long)Session["userId"];
+            Comment c = new Comment(idStore,idUser,text,Int32.Parse(rating));
+            bllComments.AddComment(c);
+            return RedirectToAction("StorePage");
         }
     }
 }

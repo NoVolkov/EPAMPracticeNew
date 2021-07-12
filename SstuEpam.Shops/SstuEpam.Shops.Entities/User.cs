@@ -8,13 +8,13 @@ namespace SstuEpam.Shops.Entities
 {
     public class User
     {
-        public long Id { get; }
-        public string Surname { get; }
-        public string Name { get; }
-        public string Patronymic { get; }
-        public string Email { get; }
-        public string Password { get; }
-        public string Role { get; }
+        public long Id { get; set; }
+        public string Surname { get; set; }
+        public string Name { get; set; }
+        public string Patronymic { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
 
         public User(long id, string surname, string name, string patronymic, string email, string password, string role)
         {
