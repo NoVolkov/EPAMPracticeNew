@@ -15,15 +15,18 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
     {
         IStoresBLL bllStores;
         ICommentsBLL bllComments;
+        IUsersBLL bllUsers;
         public HomeController()
         {
             bllStores = DependencyResolver.Dependencies.Instance.GetStoresBLL;
             bllComments = DependencyResolver.Dependencies.Instance.GetCommentsBLL;
+            bllUsers = DependencyResolver.Dependencies.Instance.GetUsersBLL;
         }
         //Глав стр со списком магазинов
         [HttpGet]
         public ActionResult Index()
         {
+            if (Session["id"]!=null && !Session["id"].Equals(-1)) ViewData["username"] = "Ну привет, " + Session["surname"] + " " + Session["name"];
             return View(bllStores.GetStores());
         }
         //Стр магазина
@@ -39,6 +42,11 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
             foreach(Comment c in list)
             {
                 CommentModel cm = new CommentModel();
+                User u = bllUsers.GetUserById(c.Id_user);
+                cm.FIOuser=u.Surname+" "+u.Name+" "+u.Patronymic;
+                cm.Text = c.Text;
+                cm.Rating = Convert.ToString(c.Rating);
+                listm.Add(cm);
                 //Добавление в список коментов
             }
             sm.comments = listm;

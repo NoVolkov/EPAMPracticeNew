@@ -12,6 +12,7 @@ namespace SstuEpam.Shops.DAL.Interfaces
         void AddUser(User user);
         void RemoveUser(string email);
         User SearchUserByEmail(string email);
+        User SearchUserById(long id);
         List<User> SearchUsersByFIO(string surname, string name = null, string patronymic = null);
         User EditUser(string email);
     }

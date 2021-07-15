@@ -31,6 +31,10 @@ namespace SstuEpam.Shops.BLL.BLL
         {
             return UsersDAO.SearchUserByEmail(email);
         }
+        public User GetUserById(long id)
+        {
+            return UsersDAO.SearchUserById(id);
+        }
 
         public List<User> GetUsers()
         {

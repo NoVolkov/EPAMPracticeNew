@@ -14,6 +14,7 @@ namespace SstuEpam.Shops.BLL.Interfaces
         void AddUser(User user);
         void RemoveUser(string email);
         User GetUserByEmail(string email);
+        User GetUserById(long id);
         List<User> GetUsers();
         User EditUser(string email, User newUser);
 

@@ -38,9 +38,9 @@ namespace SstuEpam.Shops.DAL.SqlDAL.ADO
             List<Comment> list = new List<Comment>();
             using (SqlConnection con = new SqlConnection(strConToMSSQLDB()))
             {
-                SqlCommand com = new SqlCommand("SelComment", con);
+                SqlCommand com = new SqlCommand("SelComments", con);
                 com.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter prm = new SqlParameter("Id", System.Data.SqlDbType.BigInt);
+                SqlParameter prm = new SqlParameter("Id_store", System.Data.SqlDbType.BigInt);
                 prm.Value = store.Id;
                 com.Parameters.Add(prm);
                 con.Open();

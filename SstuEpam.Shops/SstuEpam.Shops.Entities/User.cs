@@ -16,6 +16,7 @@ namespace SstuEpam.Shops.Entities
         public string Password { get; set; }
         public string Role { get; set; }
 
+        public User() { }
         public User(long id, string surname, string name, string patronymic, string email, string password, string role)
         {
             Id = id;

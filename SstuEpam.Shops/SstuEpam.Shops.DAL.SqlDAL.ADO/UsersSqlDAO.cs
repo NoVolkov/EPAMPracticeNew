@@ -85,6 +85,36 @@ namespace SstuEpam.Shops.DAL.SqlDAL.ADO
             }
             return u;
         }
+
+        public User SearchUserById(long id)
+        {
+            User u = null;
+            using (SqlConnection con = new SqlConnection(strConToMSSQLDB()))
+            {
+                SqlCommand com = new SqlCommand("SelUserById", con);
+                com.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter prm = new SqlParameter("@Id", System.Data.SqlDbType.BigInt);
+                prm.Value = id;
+                com.Parameters.Add(prm);
+                con.Open();
+                SqlDataReader r = com.ExecuteReader();
+                while (r.Read())
+                {
+                    u = new User(
+                        (long)r["id"],
+                        (string)r["surname"],
+                        (string)r["name"],
+                        (string)r["patronymic"],
+                        (string)r["email"],
+                        (string)r["password"],
+                        (string)r["role"]
+                        );
+                }
+                con.Close();
+            }
+            return u;
+        }
+
         //процедура с необязательными параметрами?? - сомневаюсь
         //несколько процедур с перебором всех возможных вариантов параметров - такое себе
         //сделать спец таблицу, по которой можно производить поиск - надо подумать
