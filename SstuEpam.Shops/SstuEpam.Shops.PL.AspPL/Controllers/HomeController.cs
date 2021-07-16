@@ -30,13 +30,14 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
             return View(bllStores.GetStores());
         }
         //Стр магазина
-        //-- Добавить список комментариев
+        //++ Добавить список комментариев
         // Home/StorePage/id
         [HttpGet]
         public ActionResult StorePage(int id)
         {
             Store s = bllStores.GetStoreById(id);
             StoreModel sm = new StoreModel(s.Name,s.Address,s.Website,s.Rating);
+            sm.Id = s.Id;
             List<Comment> list = bllComments.GetCommentByStore(s);
             List<CommentModel> listm = new List<CommentModel>();
             foreach(Comment c in list)
@@ -47,20 +48,25 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
                 cm.Text = c.Text;
                 cm.Rating = Convert.ToString(c.Rating);
                 listm.Add(cm);
-                //Добавление в список коментов
+                
             }
             sm.comments = listm;
 
             return View(sm);
         }
         //Сделать так, чтобы только авторизированные пользователи могли работать с формой и методом
+        //?? Просто заблокировать поле и кнопку в представлении
         [HttpPost]
         public ActionResult SendComment(long idStore, string text, string rating)
         {
-            long idUser = (long)Session["userId"];
+            long idUser = (long)Session["id"];
             Comment c = new Comment(idStore,idUser,text,Int32.Parse(rating));
+            int oldRatingStore =Int32.Parse(bllStores.GetStoreById(idStore).Rating);
+            int quantityComments=bllComments.GetQuantityCommentsByIdStore(idStore);
+            int newRatingStore = (oldRatingStore * quantityComments + Int32.Parse(rating)) / (quantityComments + 1);
+            bllStores.EditRatingStore(idStore, newRatingStore);
             bllComments.AddComment(c);
-            return RedirectToAction("StorePage");
+            return RedirectToAction("StorePage","Home",new { id=idStore});
         }
     }
 }

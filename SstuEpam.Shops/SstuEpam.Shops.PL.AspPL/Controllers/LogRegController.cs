@@ -47,21 +47,33 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
                 ViewData["ErrorMes"] += "Неправильный пароль.";
                 return View(new LoginModel());
             }
+            switch (userEnter.Remember)
+            {
+                case true:
+                    {
+                        //запомнить данные в куки
+                        HttpContext.Response.Cookies["id"].Value = Convert.ToString(dbUser.Id);
+                        HttpContext.Response.Cookies["surname"].Value = dbUser.Surname;
+                        HttpContext.Response.Cookies["name"].Value = dbUser.Name;
+                        HttpContext.Response.Cookies["patronymic"].Value = dbUser.Patronymic;
+                        HttpContext.Response.Cookies["email"].Value = dbUser.Email;
+                        HttpContext.Response.Cookies["role"].Value = dbUser.Role;
+                    }
+                    break;
+                default:
+                    {
+                        //запомнить в текущей сессии
+                        Session["id"] = dbUser.Id;
+                        Session["surname"] = dbUser.Surname;
+                        Session["name"] = dbUser.Name;
+                        Session["patronymic"] = dbUser.Patronymic;
+                        Session["email"] = dbUser.Email;
+                        Session["role"] = dbUser.Role;
+                    }
+                    break;
 
-            if (userEnter.Remember)
-            {
-                //запомнить данные в куки
             }
-            else
-            {
-                //запомнить в текущей сессии
-                Session["id"] = dbUser.Id;
-                Session["surname"] = dbUser.Surname;
-                Session["name"] =dbUser.Name;
-                Session["patronymic"] =dbUser.Patronymic;
-                Session["email"] =dbUser.Email;
-                Session["role"] =dbUser.Role;
-            }
+            
             return RedirectToAction("../Home/Index");
 
         }

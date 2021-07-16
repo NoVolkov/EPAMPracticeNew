@@ -15,5 +15,6 @@ namespace SstuEpam.Shops.DAL.Interfaces
         Store SearchStoreById(long id);
         List<Store> FindAllStores();
         void EditStore(long id, Store newStore);
+        void EditRatingStore(long idStore, int rating);
     }
 }

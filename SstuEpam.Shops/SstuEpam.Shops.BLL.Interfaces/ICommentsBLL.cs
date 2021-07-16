@@ -13,5 +13,6 @@ namespace SstuEpam.Shops.BLL.Interfaces
         ICommentsDAO CommentsDAO { get; set; }
         void AddComment(Comment comment);
         List<Comment> GetCommentByStore(Store store);
+        int GetQuantityCommentsByIdStore(long idStore);
     }
 }

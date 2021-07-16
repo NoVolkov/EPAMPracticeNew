@@ -27,6 +27,9 @@ namespace SstuEpam.Shops.BLL.BLL
             return CommentsDAO.FindAllCommentsByStore(store);
         }
 
-
+        public int GetQuantityCommentsByIdStore(long idStore)
+        {
+            return CommentsDAO.QuantityCommentsByIdStore(idStore);
+        }
     }
 }

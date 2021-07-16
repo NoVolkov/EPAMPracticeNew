@@ -22,9 +22,9 @@ namespace SstuEpam.Shops.DAL.SqlDAL.ADO
                 prms[0].Value = commment.Id_store;
                 prms[1] = new SqlParameter("@Id_user", System.Data.SqlDbType.BigInt);
                 prms[1].Value = commment.Id_user;
-                prms[2] = new SqlParameter("@Text", System.Data.SqlDbType.BigInt);
+                prms[2] = new SqlParameter("@Text", System.Data.SqlDbType.NVarChar,200);
                 prms[2].Value = commment.Text;
-                prms[3] = new SqlParameter("@Rating", System.Data.SqlDbType.BigInt);
+                prms[3] = new SqlParameter("@Rating", System.Data.SqlDbType.Int);
                 prms[3].Value = commment.Rating;
                 com.Parameters.AddRange(prms);
                 con.Open();
@@ -58,6 +58,27 @@ namespace SstuEpam.Shops.DAL.SqlDAL.ADO
                 con.Close();
             }
             return list;
+        }
+
+        public int QuantityCommentsByIdStore(long idStore)
+        {
+            int r=0;
+            using (SqlConnection con = new SqlConnection(strConToMSSQLDB()))
+            {
+                SqlCommand com = new SqlCommand("QuantityComments", con);
+                com.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter[] prms = new SqlParameter[2];
+                prms[0] = new SqlParameter("Id_Store", System.Data.SqlDbType.BigInt);
+                prms[0].Value =idStore;
+                prms[1] = new SqlParameter { ParameterName = "@Quantity", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+                com.Parameters.AddRange(prms);
+                con.Open();
+                com.ExecuteNonQuery();
+                r = (int)com.Parameters["@Quantity"].Value;
+               
+                con.Close();
+            }
+            return r;
         }
     }
 }

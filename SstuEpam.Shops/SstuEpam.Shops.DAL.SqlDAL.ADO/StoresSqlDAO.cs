@@ -31,6 +31,25 @@ namespace SstuEpam.Shops.DAL.SqlDAL
             }
         }//+
 
+        public void EditRatingStore(long idStore, int rating)
+        {
+            using (SqlConnection con = new SqlConnection(strConToMSSQLDB()))
+            {
+                SqlCommand com = new SqlCommand("UpdRatingStore", con);
+                com.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter[] prms = new SqlParameter[2];
+                prms[0]= new SqlParameter("@Id_Store", System.Data.SqlDbType.BigInt);
+                prms[0].Value = idStore;
+                prms[1] = new SqlParameter("@Rating", System.Data.SqlDbType.NVarChar, 1);
+                prms[1].Value = Convert.ToString(rating);
+                com.Parameters.AddRange(prms);
+                con.Open();
+                com.ExecuteNonQuery();
+                
+                con.Close();
+            }
+        }
+
         public void EditStore(long id, Store newStore)
         {
             using (SqlConnection con = new SqlConnection(strConToMSSQLDB()))
@@ -40,7 +59,7 @@ namespace SstuEpam.Shops.DAL.SqlDAL
                 SqlParameter[] prms = new SqlParameter[4];
                 prms[0] = new SqlParameter("@Name", System.Data.SqlDbType.NVarChar, 50);
                 prms[0].Value = newStore.Name;
-                prms[1] = new SqlParameter("@Rating", System.Data.SqlDbType.Char, 1);
+                prms[1] = new SqlParameter("@Rating", System.Data.SqlDbType.NVarChar, 1);
                 prms[1].Value = newStore.Rating;
                 prms[2] = new SqlParameter("@Address", System.Data.SqlDbType.NVarChar, 50);
                 prms[2].Value = newStore.Address;

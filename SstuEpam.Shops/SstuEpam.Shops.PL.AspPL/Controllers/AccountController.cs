@@ -23,7 +23,25 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
         [HttpGet]
         public ActionResult UserPage()
         {
-            return View();
+            long idUser;
+            if (Session["id"] != null && !Session["id"].Equals(-1))
+            {
+               idUser = (int)Session["id"];
+            }
+            else
+            {
+                if (HttpContext.Request.Cookies["id"].Value != null && !HttpContext.Request.Cookies["id"].Value.Equals("-1"))
+                {
+                    idUser = Int64.Parse(HttpContext.Request.Cookies["id"].Value);
+                }
+                else
+                {
+                    return RedirectToAction("../LogReg/LoginPage");
+                }
+                
+            }
+            //Сделать модель пользователя и под неё переделать
+            return View(bllUser.GetUserById(idUser));
         }
 
         //Стр редактирования

@@ -11,5 +11,6 @@ namespace SstuEpam.Shops.DAL.Interfaces
     {
         void AddComment(Comment commment);
         List<Comment> FindAllCommentsByStore(Store store);
+        int QuantityCommentsByIdStore(long idStore);
     }
 }

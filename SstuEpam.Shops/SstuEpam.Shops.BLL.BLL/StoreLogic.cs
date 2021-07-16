@@ -48,5 +48,10 @@ namespace SstuEpam.Shops.BLL.BLL
         {
             return StoresDAO.SearchStoreById(id);
         }
+
+        public void EditRatingStore(long idStore, int rating)
+        {
+            StoresDAO.EditRatingStore(idStore, rating);
+        }
     }
 }

@@ -10,6 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>StorePage</title>
+    <link rel="stylesheet" href="~/Content/style/styleStorePage.css"/>
 </head>
 <body>
     <div>
@@ -49,8 +50,43 @@
             </dd>
             
         </dl>
+        <div class="formComment">
+            @using (Html.BeginForm("SendComment","Home",FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="">
+                    <h4>Введите свой отзыв об этом магазине.</h4>
+                    @ViewData["ErrorMesComment"]
+                    <div class="form-group">
+                        @Html.Hidden("idStore",Model.Id)
+                        <div class="messege">
+                            @Html.TextArea("text","",5,5,null)
+                        </div>
+                        <div class="rating">
+                            @Html.RadioButton("rating", "1")
+                            @Html.RadioButton("rating", "2")
+                            @Html.RadioButton("rating", "3")
+                            @Html.RadioButton("rating", "4")
+                            @Html.RadioButton("rating", "5")
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Отправить" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
         <div class="comments">
-
+            @foreach(var item in Model.comments)
+            {
+                <div class="cell">
+                    <div class="username">@item.FIOuser</div>
+                    <div class="rating">@item.Rating</div>
+                    <div class="userComment">@item.Text</div>
+                </div>
+            }
         </div>
     </div>
     <p>

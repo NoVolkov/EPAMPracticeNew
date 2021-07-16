@@ -17,5 +17,6 @@ namespace SstuEpam.Shops.BLL.Interfaces
         Store GetStoreById(long id);
         List<Store> GetStores();
         void EditStore(long id, Store newStore);
+        void EditRatingStore(long idStore, int rating);
     }
 }
