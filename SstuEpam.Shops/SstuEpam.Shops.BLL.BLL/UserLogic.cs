@@ -24,7 +24,7 @@ namespace SstuEpam.Shops.BLL.BLL
 
         public User EditUser(string email, User newUser)
         {
-            throw new NotImplementedException();
+            return UsersDAO.EditUser(email, newUser);
         }
 
         public User GetUserByEmail(string email)

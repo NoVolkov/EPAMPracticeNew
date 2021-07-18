@@ -14,7 +14,7 @@ namespace SstuEpam.Shops.DAL.Interfaces
         User SearchUserByEmail(string email);
         User SearchUserById(long id);
         List<User> SearchUsersByFIO(string surname, string name = null, string patronymic = null);
-        User EditUser(string email);
+        User EditUser(string email, User newUser);
     }
 }
 

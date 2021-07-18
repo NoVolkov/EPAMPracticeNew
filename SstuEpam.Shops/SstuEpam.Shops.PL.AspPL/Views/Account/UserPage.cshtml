@@ -1,4 +1,4 @@
-﻿@model SstuEpam.Shops.Entities.User
+﻿@model SstuEpam.Shops.PL.AspPL.Models.UserModel
 
 @{
     Layout = null;
@@ -12,63 +12,68 @@
     <title>UserPage</title>
 </head>
 <body>
+
+    @Html.ActionLink("Главная страница", "../Home/Index")
+    @if (Request.Cookies["id"] != null && !Request.Cookies["id"].Value.Equals("-1") ||
+        Session["id"] != null && !Session["id"].Equals(-1))
+    {
+        <p>@Html.ActionLink("Выйти", "../LogReg/LogOut")</p>
+        <p>@Html.ActionLink("Личный кабинет", "../Account/UserPage")</p>
+    }
+    else
+    {
+        <p>@Html.ActionLink("Войти", "../LogReg/LoginPage")</p>
+        <p>@Html.ActionLink("Зарегестрироваться", "../LogReg/RegistrationPage")</p>
+    }
     <div>
-        <h4>User</h4>
+        <h4>UserModel</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Surname)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Surname)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Name)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Name)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Patronymic)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Patronymic)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Email)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Email)
             </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Password)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Password)
-            </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Role)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Role)
             </dd>
-    
+
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Редактировать", "UserEditPage")
+
     </p>
 </body>
 </html>

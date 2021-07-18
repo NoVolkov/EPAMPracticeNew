@@ -26,7 +26,20 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            if (Session["id"]!=null && !Session["id"].Equals(-1)) ViewData["username"] = "Ну привет, " + Session["surname"] + " " + Session["name"];
+            
+            if(HttpContext.Request.Cookies["id"]!=null)
+            {
+                if(!HttpContext.Request.Cookies["id"].Value.Equals("-1"))ViewData["username"] = "Ну привет, " + HttpContext.Request.Cookies["surname"].Value + " " + HttpContext.Request.Cookies.Get("name").Value;
+            }
+            else
+            {
+                if (Session["id"] != null)
+                {
+                    if(!Session["id"].Equals(-1))ViewData["username"] = "Ну привет, " + Session["surname"] + " " + Session["name"];
+                }
+                
+            }
+            
             return View(bllStores.GetStores());
         }
         //Стр магазина

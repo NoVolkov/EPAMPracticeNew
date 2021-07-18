@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SstuEpam.Shops.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,15 @@ namespace SstuEpam.Shops.PL.AspPL.Models
         public string Website { get; set; }
         public string Rating { get; set; }
         public List<CommentModel> comments;
+        public StoreModel() { }
+        public StoreModel(Store s)
+        {
+            Id = s.Id;
+            Name = s.Name;
+            Address = s.Address;
+            Website = s.Website;
+            Rating = s.Rating;
+        }
 
         public StoreModel(string name, string address, string website, string rating)
         {

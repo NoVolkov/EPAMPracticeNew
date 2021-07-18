@@ -1,5 +1,6 @@
 ﻿using SstuEpam.Shops.BLL.Interfaces;
 using SstuEpam.Shops.Entities;
+using SstuEpam.Shops.PL.AspPL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +27,11 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
             long idUser;
             if (Session["id"] != null && !Session["id"].Equals(-1))
             {
-               idUser = (int)Session["id"];
+               idUser = (long)Session["id"];
             }
             else
             {
-                if (HttpContext.Request.Cookies["id"].Value != null && !HttpContext.Request.Cookies["id"].Value.Equals("-1"))
+                if (HttpContext.Request.Cookies["id"]!= null && !HttpContext.Request.Cookies["id"].Value.Equals("-1"))
                 {
                     idUser = Int64.Parse(HttpContext.Request.Cookies["id"].Value);
                 }
@@ -40,8 +41,10 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
                 }
                 
             }
-            //Сделать модель пользователя и под неё переделать
-            return View(bllUser.GetUserById(idUser));
+            User u = bllUser.GetUserById(idUser);
+
+            
+            return View(new UserModel(u));
         }
 
         //Стр редактирования
@@ -49,33 +52,58 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
         [HttpGet]
         public ActionResult UserEditPage()
         {
-            User u = new User(
-                (long)Session["id"],
-                (string)Session["surname"],
-                (string)Session["name"],
-                (string)Session["patronymic"],
-                (string)Session["email"],
-                "",
-                (string)Session["role"]
-                );
-            return View(u);
+            long idUser;
+            if (Session["id"] != null && !Session["id"].Equals(-1))
+            {
+                idUser = (long)Session["id"];
+            }
+            else
+            {
+                if (HttpContext.Request.Cookies["id"] != null && !HttpContext.Request.Cookies["id"].Value.Equals("-1"))
+                {
+                    idUser = Int64.Parse(HttpContext.Request.Cookies["id"].Value);
+                }
+                else
+                {
+                    return RedirectToAction("../LogReg/LoginPage");
+                }
+
+            }
+            User u = bllUser.GetUserById(idUser);
+            return View(new UserModel(u));
         }
         //??HttpPut
         
         [HttpPost]
-        public ActionResult UserEditPage(User u)
+        public ActionResult UserEditPage(UserModel u)
         {
+            string email;
+            if (Session["email"] != null && !Session["email"].Equals(-1))
+            {
+                email = (string)Session["email"];
+            }
+            else
+            {
+                if (HttpContext.Request.Cookies["email"]!= null && !HttpContext.Request.Cookies["email"].Value.Equals("-1"))
+                {
+                    email = HttpContext.Request.Cookies["email"].Value;
+                }
+                else
+                {
+                    return RedirectToAction("../LogReg/LoginPage");
+                }
+
+            }
             if (u.Name == null &&
                 u.Surname == null &&
                 u.Patronymic == null &&
-                u.Email == null &&
-                u.Password == null) return View();
+                u.Password == null) return RedirectToAction("UserEditPage");
             byte[] data = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(u.Password));
             StringBuilder sb = new StringBuilder();
             foreach(byte b in data) { sb.Append(b.ToString("x2")); }
             string newPassword = sb.ToString();
-            User newUser = new User(u.Id,u.Surname,u.Name,u.Patronymic,u.Email,newPassword,"USER");
-            bllUser.EditUser(u.Email, newUser);
+            User newUser = new User(u.Surname,u.Name,u.Patronymic,newPassword);
+            bllUser.EditUser(email, newUser);
             return RedirectToAction("UserPage");
         }
 

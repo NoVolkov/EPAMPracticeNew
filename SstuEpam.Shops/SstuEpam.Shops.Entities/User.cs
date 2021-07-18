@@ -27,6 +27,13 @@ namespace SstuEpam.Shops.Entities
             Password = password;
             Role = role;
         }
+        public User(string surname, string name, string patronymic, string password)
+        {
+            Surname = surname;
+            Name = name;
+            Patronymic = patronymic;
+            Password = password;
+        }
         public override string ToString()
         {
             return Id + " " + Surname + " " + Name + " " + Patronymic + " " + Password + " " + Role;

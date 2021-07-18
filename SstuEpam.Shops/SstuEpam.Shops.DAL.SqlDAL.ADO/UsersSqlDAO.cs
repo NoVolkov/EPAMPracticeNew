@@ -37,9 +37,32 @@ namespace SstuEpam.Shops.DAL.SqlDAL.ADO
             }
         }
 
-        public User EditUser(string email)
+       
+
+        public User EditUser(string email, User newUser)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(strConToMSSQLDB()))
+            {
+                SqlCommand com = new SqlCommand("UpdUser", con);
+                com.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter[] prms = new SqlParameter[5];
+                prms[0] = new SqlParameter("@Email", System.Data.SqlDbType.NVarChar, 50);
+                prms[0].Value = email;
+                prms[1] = new SqlParameter("@Surname", System.Data.SqlDbType.NVarChar, 50);
+                prms[1].Value = newUser.Surname;
+                prms[2] = new SqlParameter("@Name", System.Data.SqlDbType.NVarChar, 50);
+                prms[2].Value = newUser.Name;
+                prms[3] = new SqlParameter("@Patronymic", System.Data.SqlDbType.NVarChar, 50);
+                prms[3].Value = newUser.Patronymic;
+                prms[4] = new SqlParameter("@Password", System.Data.SqlDbType.NChar, 64);
+                prms[4].Value = newUser.Password;
+                
+                com.Parameters.AddRange(prms);
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+            return newUser;
         }
 
         public void RemoveUser(string email)
@@ -109,6 +132,7 @@ namespace SstuEpam.Shops.DAL.SqlDAL.ADO
                         (string)r["password"],
                         (string)r["role"]
                         );
+                
                 }
                 con.Close();
             }

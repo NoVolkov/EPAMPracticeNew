@@ -28,7 +28,8 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
         [HttpPost]
         public ActionResult LoginPage(LoginModel userEnter)
         {
-            if (Session["id"]!=null&&!Session["id"].Equals(-1)) 
+            if ((Session["id"]!=null&&!Session["id"].Equals(-1)) ||
+                 HttpContext.Request.Cookies["id"] != null && !HttpContext.Request.Cookies["id"].Value.Equals("-1"))
             {
                 ViewData["ErrorMes"] += "Выйдите из под нанешней учётной записи.\n";
                 return View(new LoginModel());
@@ -73,7 +74,7 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
                     break;
 
             }
-            
+            HttpContext.Response.Cookies["1"].Value = "123456";
             return RedirectToAction("../Home/Index");
 
         }
@@ -105,6 +106,31 @@ namespace SstuEpam.Shops.PL.AspPL.Controllers
             bllUser.AddUser(u);
             return RedirectToAction("../Home/Index");
         }
-        
+        [HttpGet]
+        public ActionResult LogOut()
+        {
+            if (HttpContext.Request.Cookies["id"] != null&& !HttpContext.Request.Cookies["id"].Value.Equals("-1"))
+            {
+                //запомнить данные в куки
+                HttpContext.Response.Cookies["id"].Value = "-1";
+                HttpContext.Response.Cookies["surname"].Value = "";
+                HttpContext.Response.Cookies["name"].Value = "";
+                HttpContext.Response.Cookies["patronymic"].Value = "";
+                HttpContext.Response.Cookies["email"].Value = "";
+                HttpContext.Response.Cookies["role"].Value = "";
+
+            }
+            else
+            {
+                //запомнить в текущей сессии
+                Session["id"] = -1;
+                Session["surname"] = "";
+                Session["name"] = "";
+                Session["patronymic"] = "";
+                Session["email"] = "";
+                Session["role"] = "";
+            }
+            return RedirectToAction("../Home/Index");
+        }
     }
 }

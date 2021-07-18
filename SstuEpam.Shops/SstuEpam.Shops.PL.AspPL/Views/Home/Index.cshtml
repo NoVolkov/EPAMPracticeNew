@@ -10,51 +10,47 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link rel="stylesheet" href="~/Content/style/styleIndex.css" />
 </head>
 <body>
+    @Html.ActionLink("Главная страница", "../Home/Index")
+
     <p>@Html.ViewData["username"]</p>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Website)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Website)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
+    @if (Request.Cookies["id"] != null && !Request.Cookies["id"].Value.Equals("-1") ||
+        Session["id"] != null && !Session["id"].Equals(-1))
+    {
+        <p>@Html.ActionLink("Выйти", "../LogReg/LogOut")</p>
+        <p>@Html.ActionLink("Личный кабинет", "../Account/UserPage")</p>
     }
-    
-    </table>
+    else
+    {
+        <p>@Html.ActionLink("Войти", "../LogReg/LoginPage")</p>
+        <p>@Html.ActionLink("Зарегестрироваться", "../LogReg/RegistrationPage")</p>
+    }
+
+    <div class="indexStores">
+        @foreach (var item in Model)
+        {
+            <div class="cell">
+                <div class="nameStore">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </div>
+                <div class="ratingStore">
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </div>
+                <div class="addressStore">
+                    @Html.DisplayFor(modelItem => item.Address)
+                </div>
+                <div class="websiteStore">
+                    @Html.DisplayFor(modelItem => item.Website)
+                </div>
+                <div class="linkStore">
+                    @Html.ActionLink("Ссылка", "/StorePage", new { id = item.Id })
+                </div>
+            </div>
+
+        }
+
+    </div>
 </body>
 </html>

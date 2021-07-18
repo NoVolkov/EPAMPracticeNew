@@ -54,13 +54,13 @@ namespace SstuEpam.Shops.DAL.SqlDAL
         {
             using (SqlConnection con = new SqlConnection(strConToMSSQLDB()))
             {
-                SqlCommand com = new SqlCommand("UpdComment", con);
+                SqlCommand com = new SqlCommand("UpdStore", con);
                 com.CommandType = System.Data.CommandType.StoredProcedure;
                 SqlParameter[] prms = new SqlParameter[4];
-                prms[0] = new SqlParameter("@Name", System.Data.SqlDbType.NVarChar, 50);
-                prms[0].Value = newStore.Name;
-                prms[1] = new SqlParameter("@Rating", System.Data.SqlDbType.NVarChar, 1);
-                prms[1].Value = newStore.Rating;
+                prms[0] = new SqlParameter("@Id", System.Data.SqlDbType.BigInt);
+                prms[0].Value = id;
+                prms[1] = new SqlParameter("@Name", System.Data.SqlDbType.NVarChar, 50);
+                prms[1].Value = newStore.Name;
                 prms[2] = new SqlParameter("@Address", System.Data.SqlDbType.NVarChar, 50);
                 prms[2].Value = newStore.Address;
                 prms[3] = new SqlParameter("@Website", System.Data.SqlDbType.NVarChar, 50);

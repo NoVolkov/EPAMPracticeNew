@@ -1,0 +1,11 @@
+﻿body {
+}
+.indexStores{
+    display:flex;
+    flex-direction:row;
+}
+.cell{
+    background-color:brown;
+    margin:5px;
+    padding:5px;
+}

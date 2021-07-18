@@ -12,16 +12,18 @@
     <title>LoginPage</title>
 </head>
 <body>
-    @using (Html.BeginForm()) 
+    @Html.ActionLink("Главная страница", "../Home/Index")
+    <p>@Html.ActionLink("Зарегестрироваться", "../LogReg/RegistrationPage")</p>
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
             <h4>User</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @ViewData["ErrorMes"]
-    
+
             <div class="form-group">
                 @Html.Label("Введите свой email:")
                 <div class="col-md-10">
@@ -29,7 +31,7 @@
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.Label("Введите свой пароль:")
                 <div class="col-md-10">
@@ -44,7 +46,7 @@
                     @Html.CheckBoxFor(model => model.Remember, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Войти" class="btn btn-default" />
@@ -52,9 +54,7 @@
             </div>
         </div>
     }
+
     
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
 </body>
 </html>
